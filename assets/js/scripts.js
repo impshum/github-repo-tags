@@ -2,7 +2,7 @@ var github_username = 'impshum';
 var github_repos = document.getElementById('github-repos');
 var github_followers = document.getElementById('github-followers');
 var github_tags = document.getElementById('github-tags');
-
+var load_me_items = document.getElementsByClassName('load-me');
 
 function titleCase(str) {
   str = str.toLowerCase().split(' ');
@@ -29,6 +29,9 @@ getJSON(`https://api.github.com/users/${github_username}/repos?page=1&per_page=1
       results += `<span class='tag'><a href='${url}' target='_blank'>${name}</a></span>`
     }
     github_tags.innerHTML = results;
+    for (var i = 0; i < load_me_items.length; i++) {
+      load_me_items[i].style.opacity = 1;
+    }
   });
 
 getJSON(`https://api.github.com/users/${github_username}`)
